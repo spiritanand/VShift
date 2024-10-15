@@ -14,7 +14,6 @@ const selector = (state) => ({
 export const SubmitButton = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { nodes, edges } = useStore(selector, shallow);
-  console.log({ nodes, edges });
 
   async function handleSubmit() {
     try {
