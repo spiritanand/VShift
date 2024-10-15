@@ -22,7 +22,7 @@ export const BlockNode = ({
   };
 
   return (
-    <div style={{ width: 200, height: 80, border: "1px solid black" }}>
+    <div className="bg-white border border-gray-300 rounded-md p-4 hover:border-gray-400 active:bg-gray-100 transition-colors duration-150 hover:shadow-md">
       {targetHandles.map((handle, index) => (
         <Handle
           key={handle}
@@ -33,9 +33,9 @@ export const BlockNode = ({
         />
       ))}
       <div>
-        <span>{label}</span>
+        <h5 className="text-sm font-medium text-gray-900">{label}</h5>
       </div>
-      <div>{children}</div>
+      <div className=" text-gray-700">{children}</div>
       {sourceHandles.map((handle, index) => (
         <Handle
           key={handle}

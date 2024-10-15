@@ -1,11 +1,15 @@
 // outputNode.js
 
-import { useState } from 'react';
-import { Handle, Position } from 'reactflow';
+import { useState } from "react";
+import { BlockNode } from "./BlockNode";
+import { Input } from "../components/ui/Input";
+import { Label } from "../components/ui/Label";
 
 export const OutputNode = ({ id, data }) => {
-  const [currName, setCurrName] = useState(data?.outputName || id.replace('customOutput-', 'output_'));
-  const [outputType, setOutputType] = useState(data.outputType || 'Text');
+  const [currName, setCurrName] = useState(
+    data?.outputName || id.replace("customOutput-", "output_")
+  );
+  const [outputType, setOutputType] = useState(data.outputType || "Text");
 
   const handleNameChange = (e) => {
     setCurrName(e.target.value);
@@ -16,32 +20,20 @@ export const OutputNode = ({ id, data }) => {
   };
 
   return (
-    <div style={{width: 200, height: 80, border: '1px solid black'}}>
-      <Handle
-        type="target"
-        position={Position.Left}
-        id={`${id}-value`}
-      />
-      <div>
-        <span>Output</span>
-      </div>
-      <div>
-        <label>
+    <BlockNode label="Output" id={id} targetHandles={["target"]}>
+      <div className="flex flex-col gap-2 mt-4">
+        <Label className="flex flex-row items-center gap-2">
           Name:
-          <input 
-            type="text" 
-            value={currName} 
-            onChange={handleNameChange} 
-          />
-        </label>
-        <label>
+          <Input type="text" value={currName} onChange={handleNameChange} />
+        </Label>
+        <Label>
           Type:
           <select value={outputType} onChange={handleTypeChange}>
             <option value="Text">Text</option>
             <option value="File">Image</option>
           </select>
-        </label>
+        </Label>
       </div>
-    </div>
+    </BlockNode>
   );
-}
+};

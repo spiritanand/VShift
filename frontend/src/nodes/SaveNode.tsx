@@ -1,5 +1,6 @@
 // Save pipeline
 
+import { Button } from "../components/ui/Button";
 import { BlockNode } from "./BlockNode";
 
 export const SaveNode = ({ id }: { id: string }) => {
@@ -9,7 +10,9 @@ export const SaveNode = ({ id }: { id: string }) => {
 
   return (
     <BlockNode label="Save" id={id}>
-      <button onClick={handleSave}>Save</button>
+      <Button variant="action" onClick={handleSave}>
+        Save
+      </Button>
     </BlockNode>
   );
 };

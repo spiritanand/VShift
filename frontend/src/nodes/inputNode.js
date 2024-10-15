@@ -1,7 +1,9 @@
 // inputNode.js
 
 import { useState } from "react";
-import { Handle, Position } from "reactflow";
+import { Label } from "../components/ui/Label";
+import { BlockNode } from "./BlockNode";
+import { Input } from "../components/ui/Input";
 
 export const InputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(data?.inputName || id.replace("customInput-", "input_"));
@@ -16,24 +18,20 @@ export const InputNode = ({ id, data }) => {
   };
 
   return (
-    <div style={{ width: 200, height: 80, border: "1px solid black" }}>
-      <div>
-        <span>Input</span>
-      </div>
-      <div>
-        <label>
+    <BlockNode label="Input" id={id} sourceHandles={["source"]}>
+      <div className="flex flex-col gap-2 mt-4">
+        <Label className="flex flex-row items-center gap-2">
           Name:
-          <input type="text" value={currName} onChange={handleNameChange} />
-        </label>
-        <label>
+          <Input type="text" value={currName} onChange={handleNameChange} />
+        </Label>
+        <Label>
           Type:
           <select value={inputType} onChange={handleTypeChange}>
             <option value="Text">Text</option>
             <option value="File">File</option>
           </select>
-        </label>
+        </Label>
       </div>
-      <Handle type="source" position={Position.Right} id={`${id}-value`} />
-    </div>
+    </BlockNode>
   );
 };

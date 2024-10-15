@@ -1,35 +1,25 @@
 // textNode.js
 
-import { useState } from 'react';
-import { Handle, Position } from 'reactflow';
+import { useState } from "react";
+import { Label } from "../components/ui/Label";
+import { Input } from "../components/ui/Input";
+import { BlockNode } from "./BlockNode";
 
 export const TextNode = ({ id, data }) => {
-  const [currText, setCurrText] = useState(data?.text || '{{input}}');
+  const [currText, setCurrText] = useState(data?.text || "{{input}}");
 
   const handleTextChange = (e) => {
     setCurrText(e.target.value);
   };
 
   return (
-    <div style={{width: 200, height: 80, border: '1px solid black'}}>
+    <BlockNode label="Text" id={id} sourceHandles={["source"]}>
       <div>
-        <span>Text</span>
-      </div>
-      <div>
-        <label>
+        <Label>
           Text:
-          <input 
-            type="text" 
-            value={currText} 
-            onChange={handleTextChange} 
-          />
-        </label>
+          <Input value={currText} onChange={handleTextChange} />
+        </Label>
       </div>
-      <Handle
-        type="source"
-        position={Position.Right}
-        id={`${id}-output`}
-      />
-    </div>
+    </BlockNode>
   );
-}
+};
