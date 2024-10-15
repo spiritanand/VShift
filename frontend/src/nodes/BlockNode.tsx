@@ -30,12 +30,13 @@ export const BlockNode = ({
           position={Position.Left}
           id={`${id}-${handle}`}
           style={{ top: calculateHandlePosition(index, targetHandles.length) }}
+          title={handle}
         />
       ))}
       <div>
         <h5 className="text-sm font-medium text-gray-900">{label}</h5>
       </div>
-      <div className=" text-gray-700">{children}</div>
+      <div className=" text-gray-700 mt-4">{children}</div>
       {sourceHandles.map((handle, index) => (
         <Handle
           key={handle}
@@ -43,6 +44,7 @@ export const BlockNode = ({
           position={Position.Right}
           id={`${id}-${handle}`}
           style={{ top: calculateHandlePosition(index, sourceHandles.length) }}
+          title={handle}
         />
       ))}
     </div>

@@ -19,7 +19,7 @@ export const InputNode = ({ id, data }) => {
 
   return (
     <BlockNode label="Input" id={id} sourceHandles={["source"]}>
-      <div className="flex flex-col gap-2 mt-4">
+      <div className="flex flex-col gap-2">
         <Label className="flex flex-row items-center gap-2">
           Name:
           <Input type="text" value={currName} onChange={handleNameChange} />
